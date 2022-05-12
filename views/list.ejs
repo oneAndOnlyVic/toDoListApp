@@ -15,23 +15,16 @@
         <h1><%= listTitle %></h1>
 
         <div class="box1">
-         
+         <form action="/delete" method="post">
             <ul>
-     
 
-                <% for(var i=0;i < newListItem.length ;i++){ %>
-                   
-                   <% if(newListItem[i]){ %>
-
-                        <li> <input type="checkbox" name="checkbox" ><p><%= newListItem[i] %></p></li>
-                   <% } %>
-                   
-                   
-                   
-                <% } %>
-        
-        
+                <% newListItem.forEach(function(item) { %>
+                    <% if(item){ %>
+                     <li> <input onchange="this.form.submit()" value="<%= item._id %>" type="checkbox" name="id" ><p><%= item.text %></p></li>
+                     <% } %>
+                <% }) %>
             </ul>
+         </form>   
         
             <form action="<%= act %>" method="post">
                
